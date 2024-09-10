@@ -1,0 +1,428 @@
+MJSlowControlsDoc: History Database Reference
+Clint Wiseman, University of South Carolina
+11/23/15
+
+NOTES: 
+1.	To generate the full list of variables for the history databases:
+	Utils Page: http://feresa.physics.unc.edu:5984/_utils/index.html
+	Change view to "ave", click "Reduce", set grouping to Level 2.
+
+2.  When creating a query, the start key in the URL is REVERSED from the format given below.
+	Example:
+	?startkey="Cryo1,Davis LN2"  will work, but
+	?startkey="Davis LN2,Cryo1"  will not.		
+
+3.  It is very likely that a badly crafted query will either return nothing,
+ 	or a LARGE amount of unwanted DB entries.  One should ALWAYS check that the data being
+ 	returned is REALLY the droids you're looking for.  
+
+=============================================================
+Master MJD CouchDB Page:
+http://feresa.physics.unc.edu:5984/_utils/index.html
+Contains much more than is listed here.
+
+ORCA Monitor (good for quick plotting):
+http://feresa.physics.unc.edu:5984/orcashistory/_design/orcas/index.html
+
+=============================================================
+MJD Run Databases:
+
+1. history_mjddaq2
+	Example view: 
+	http://feresa.physics.unc.edu:5984/history_mjddaq2/_design/runnumber/_view/datelist
+
+	Example view 2:
+	http://feresa.physics.unc.edu:5984/history_mjddaq2/_design/runnumber/_view/datelist?include_docs=true
+
+2. history_mjddaq
+	Example view:
+	http://feresa.physics.unc.edu:5984/history_mjddaq/_design/runnumber/_view/datelist
+
+3. history_mjdstringtestdaq -- view "datelist" not available
+
+4. history_mjddetaccdaq -- view "datelist" not available
+
+
+=============================================================
+MJD History Databases:
+
+1. history_cryovaca -- Module 2 vac system
+2. history_cryovacb -- Module 1 vac system
+3. history_mah_desktop
+4. history_malbekdaq 
+5. history_mjd_detectors -- Baselines, etc.
+6. history_mjdaq3
+7. history_mjddaq -- ORCA info, etc.
+8. history_mjddaq2 -- ORCA info, etc.
+9. history_mjddetaccdaq 
+10. history_mjdscm -- Slow Controls Database
+11. history_mjdstringtestdaq
+12  history_onsite_analysis_mac_pro
+13. history_stcpumpcart
+14. history_tcrdaq -- TCR Slow Controls
+15. history_tcrdaq_(2) -- TCR Slow Controls (2)
+
+=============================================================
+1. history_cryovaca
+
+Example view:
+http://feresa.physics.unc.edu:5984/history_cryovaca/_design/history/_view/values?startkey=%22Baratron,Module%20Parameters%22
+
+Variable list:
+["CryoVacuum", "Cryopump Pressure"]	{tot: 63033363.33100598, count: 1282318, avg: 49.15579702617134}
+["CryoVacuum", "Cryostat Pressure"]	{tot: 161193402.21984056, count: 1282318, avg: 125.7047021252455}
+["CryoVacuum", "RGA Pressure"]		{tot: 128382019.86850053, count: 1282318, avg: 100.11714712614229}
+["CryoVacuum", "Turbo Pressure"]	{tot: 14251705.855511613, count: 1282318, avg: 11.114018406909684}
+["Module Parameters", "Baratron"]	{tot: 491338.561096251, count: 624199, avg: 0.7871505098474221}
+["Module Parameters", "Heater 1"]	{tot: 11873855.402559288, count: 485337, avg: 24.46517657330739}
+["Module Parameters", "Heater 2"]	{tot: 305373.19964799285, count: 485337, avg: 0.6291982676943915}
+["Module Parameters", "Temp 0"]		{tot: 279334455.25341797, count: 639254, avg: 436.9694288239385}
+["Module Parameters", "Temp 1"]		{tot: 55703092.4114151, count: 639254, avg: 87.13765171812003}
+["Module Parameters", "Temp 2"]		{tot: 55953608.276893616, count: 639254, avg: 87.52953955218679}
+["Module Parameters", "Temp 3"]		{tot: 250070748.43668365, count: 639254, avg: 391.1915270560429}
+["Module Parameters", "Temp 4"]		{tot: 32752168.269016266, count: 639254, avg: 51.234983698211146}
+["Module Parameters", "Temp 5"]		{tot: 57071640.80292511, count: 639254, avg: 89.27850401080808}
+["Module Parameters", "Temp 6"]		{tot: 54903473.80808258, count: 639254, avg: 85.88678961427317}
+["Module Parameters", "Temp 7"]		{tot: 55480598.55415344, count: 639254, avg: 86.78959936762764}
+["Module Parameters", "Temp A"]		{tot: 74467780.44169796, count: 485337, avg: 153.4352016056842}
+["Module Parameters", "Temp B"]		{tot: 72441971.10396099, count: 485337, avg: 149.26117543884143}
+["Module Parameters", "Temp C"]		{tot: 65693748.35262823, count: 485337, avg: 135.35697536480473}
+["Module Parameters", "Temp D"]		{tot: 53599511.66201401, count: 485337, avg: 110.43771989774942}
+
+=============================================================
+2. history_cryovacb
+
+Example view:
+http://feresa.physics.unc.edu:5984/history_cryovacb/_design/history/_view/values?startkey=%22Baratron,CryoVacB%22
+
+Variable list:
+["CryoVacB", "Baratron"]			{tot: 480389.58434380044, count: 480642, avg: 0.9994748364558246}
+["CryoVacB", "Cryopump Pressure"]	{tot: 153422391.0013894, count: 655844, avg: 233.93122602538014}
+["CryoVacB", "Cryostat Pressure"]	{tot: 194205084.23587406, count: 655844, avg: 296.11475325820476}
+["CryoVacB", "RGA Pressure"]		{tot: 73137420.84820056, count: 655844, avg: 111.51648997048164}
+["CryoVacB", "Turbo Pressure"]		{tot: 22371018.209870387, count: 655844, avg: 34.11027349471885}
+
+=============================================================
+3. history_mah_desktop
+skip it
+
+=============================================================
+4. history_malbekdaq
+skip it
+
+=============================================================
+5. history_mjd_detectors
+
+Example view:
+http://feresa.physics.unc.edu:5984/history_mjd_detectors/_design/history/_view/values?startkey=%22Baseline%20Voltage,P42748A%22
+
+Variable list:
+ALL detectors have THREE (3) accessible variables, in the format: 
+["Your-Favorite-Detector", "Adc Temperature"]	
+["Your-Favorite-Detector", "Baseline Voltage"]	
+["Your-Favorite-Detector", "Leakage Current"]	
+
+[" B8459", "(var)"]		{count: 19103, avg: -2.708182284991886}
+[" P42537A", "(var)"]	{count: 9261, avg: -3.0112032606629944}
+["0", "(var)"]			{count: 15432, avg: 0.07382816940889061}
+["1", "(var)"]			{count: 3, avg: -3.2470699999999995}
+["2", "(var)"]			{count: 3, avg: -3.1966143333333332}
+["3", "(var)"]			{count: 3, avg: -3.3691406666666666}
+["4", "(var)"]			{count: 5, avg: -3.3417968}
+["a", "(var)"]			{count: 5, avg: -2.7402344}
+["abc", "(var)"]		{count: 102, avg: -4.435077337254902}
+["B8455", "(var)"]		{count: 415892, avg: -2.217469057511853}
+["B8456", "(var)"]		{count: 622691, avg: -2.8972808921572155}
+["B8459", "(var)"]		{count: 45135, avg: -3.5124272505705543}
+["B8461", "(var)"]		{count: 777862, avg: -2.8545576384761087}
+["B8463", "(var)"]		{count: 369905, avg: -1.7142922286711315}
+["B8465", "(var)"]		{count: 369804, avg: -2.198280726628076}
+["B8466", "(var)"]		{count: 630927, avg: -3.3377343211252053}
+["B8469", "(var)"]		{count: 373260, avg: -2.169806803164875}
+["B8470", "(var)"]		{count: 373773, avg: -2.1710706897192846}
+["B8473", "(var)"]		{count: 631067, avg: -3.9087642778618377}
+["B8474", "(var)"]		{count: 470025, avg: -1.6252598209159697}
+["B8477", "(var)"]		{count: 365655, avg: -2.327465289081555}
+["B8480", "(var)"]		{count: 410378, avg: 1.0235764718019893}
+["B8482", "(var)"]		{count: 448461, avg: -0.6535648370273625}
+["B8487", "(var)"]		{count: 521003, avg: -0.17526834548509312}
+["B8607", "(var)"]		{count: 630815, avg: -2.6470567758026124}
+["B8619", "(var)"]		{count: 764155, avg: -2.7933306910226494}
+["B8621", "(var)"]		{count: 630642, avg: -2.896700036919467}
+["B8717", "(var)"]		{count: 670577, avg: -2.8815654118401843}
+["c2s1d1", "(var)"]		{count: 2078, avg: -3.0175030274302213}
+["c2s1d2", "(var)"]		{count: 2075, avg: -3.5739342043373488}
+["c2s1d3", "(var)"]		{count: 2076, avg: -3.576860396917148}
+["c2s1d4", "(var)"]		{count: 2474, avg: -3.570170782942604}
+["P24575B", "(var)"]	{count: 85, avg: 0.2561466352941176}
+["P42537A", "(var)"]	{count: 393616, avg: 0.6891639714589777}
+["P42538A", "(var)"]	{count: 393946, avg: -2.195003481712408}
+["P42538B", "(var)"]	{count: 393180, avg: -2.1235768966615325}
+["P42538B ", "(var)"]	{count: 26190, avg: -1.1619436071879337}
+["P42573A", "(var)"]	{count: 391848, avg: -2.595296177454238}
+["P42573A ", "(var)"]	{count: 26190, avg: -1.1634707509408928}
+["P42573B", "(var)"]	{count: 319612, avg: -2.5525034170673315}
+["P42574A", "(var)"]	{count: 449368, avg: -2.204170468692506}
+["P42574B", "(var)"]	{count: 431050, avg: -1.7975827710139007}
+["P42574C", "(var)"]	{count: 445222, avg: -1.563545738559177}
+["P42575A", "(var)"]	{count: 347067, avg: -2.2313262786484906}
+["P42575B", "(var)"]	{count: 363864, avg: -2.6576235568447393}
+["P42661A", "(var)"]	{count: 365365, avg: -2.4320266151975916}
+["P42661B", "(var)"]	{count: 449407, avg: -2.2436677311124003}
+["P42661C", "(var)"]	{count: 347075, avg: -2.5748504757946327}
+["P42662A", "(var)"]	{count: 437090, avg: -1.7308161935336406}
+["P42662B", "(var)"]	{count: 447967, avg: -1.9365422974189161}
+["P42662C", "(var)"]	{count: 498811, avg: -2.997142673980057}
+["P42664A", "(var)"]	{count: 483801, avg: -4.030236153885801}
+["P42664B", "(var)"]	{count: 64237, avg: -2.0514950814741044}
+["P42665A", "(var)"]	{count: 436827, avg: -2.2722904901637033}
+["P42665B", "(var)"]	{count: 563333, avg: -2.5718210879132273}
+["P42665C", "(var)"]	{count: 477957, avg: -1.2800986064451214}
+["P42698A", "(var)"]	{count: 419317, avg: 1.3186862899726453}
+["P42698B", "(var)"]	{count: 347354, avg: -2.369640460253468}
+["P42712A", "(var)"]	{count: 85243, avg: -0.6796389634003259}
+["P42712B", "(var)"]	{count: 478092, avg: -2.168415216066783}
+["P42748A", "(var)"]	{count: 52728, avg: -3.264064543517143}
+["P42748A ", "(var)"]	{count: 11505, avg: -3.303525585438505}
+["P42748B", "(var)"]	{count: 64236, avg: -3.606852859084813}
+["P427665C", "(var)"]	{count: 118, avg: -1.898048575559322}
+["P42853B", "(var)"]	{count: 85244, avg: -0.6807668585610949}
+["Ponama1", "(var)"]	{count: 12858, avg: -4.568747767351066}
+["PONaMa1", "(var)"]	{count: 751586, avg: -4.211999148790567}
+["Ponama2", "(var)"]	{count: 12858, avg: -3.7704510243630405}
+["PONaMa2", "(var)"]	{count: 749763, avg: -3.5246951190778}
+["S2D1", "(var)"]		{count: 28, avg: 0.44590546671428577}
+["S2D2", "(var)"]		{count: 28, avg: 0.801653234642857}
+["S2D3", "(var)"]		{count: 28, avg: -1.335449064714286}
+["S2D4", "(var)"]		{count: 30, avg: 2.768229106266667}
+["S5D3", "(var)"]		{count: 1545, avg: 3.9829115115236244}
+["S6D1", "(var)"]		{count: 24309, avg: -0.008356761040766793}
+["S7D1", "(var)"]		{count: 16785, avg: -3.074057204554543}
+["S7D2", "(var)"]		{count: 16784, avg: -3.0261906741806466}
+["S7D3", "(var)"]		{count: 16784, avg: 5.518922145230691}
+["S7D4", "(var)"]		{count: 16782, avg: 4.630071102642827}
+["STof1", "(var)"]		{count: 23, avg: -3.1046195217391306}
+["STof1-0", "(var)"]	{count: 96169, avg: 1.539995763477691}
+["STof1-1", "(var)"]	{count: 99014, avg: 2.295590677927133}
+["STof1-2", "(var)"]	{count: 36139, avg: 1.269497625944271}
+["STof1-3", "(var)"]	{count: 2841, avg: -4.012798826821543}
+["STof1-4", "(var)"]	{count: 36143, avg: 1.6077647652030824}
+["Test", "(var)"]		{count: 30, avg: 4.528320166666668}
+["test1", "(var)"]		{count: 1590, avg: -0.22554294339622644}
+
+Misc. variables:
+["DetectorA", "Baseline"]		{count: 6, avg: 0}
+["DetectorA", "Leakage"]		{count: 6, avg: 0}
+["DetectorA", "Temp"]			{count: 6, avg: 0}
+["DetectorB", "Baseline"]		{count: 6, avg: 0}
+["DetectorB", "Leakage"]		{count: 6, avg: 0}
+["DetectorB", "Temp"]			{count: 6, avg: 0}
+["N/A", "(var)"]				{count: 749, avg: 3.4270172309746334}
+["N/C", "(var)"]				{count: 76, avg: 4.932604276315789}
+["P", "(var)"]					{count: 1, avg: 0}
+["test1", "Baseline Current"]	{count: 52, avg: -0.22986778846153846}
+
+=============================================================
+6. history_mjdaq3
+skip it
+
+=============================================================
+7. history_mjddaq
+
+NOTE: It is difficult to return ONLY one variable from this database. The example view 
+returns many things not asked for.
+
+Example view:
+
+Variable list:
+["PreAmpSupply1", "-12VErrors"]	{tot: 0, count: 45, avg: 0}
+["PreAmpSupply1", "-24VErrors"]	{tot: 0, count: 45, avg: 0}
+["PreAmpSupply1", "+12VErrors"]	{tot: 0, count: 45, avg: 0}
+["PreAmpSupply1", "+24VErrors"]	{tot: 0, count: 45, avg: 0}
+["PreAmpSupply2", "-12VErrors"]	{tot: 24910, count: 24953, avg: 0.9982767603093816}
+["PreAmpSupply2", "-24VErrors"]	{tot: 24910, count: 24953, avg: 0.9982767603093816}
+["PreAmpSupply2", "+12VErrors"]	{tot: 24910, count: 24953, avg: 0.9982767603093816}
+["PreAmpSupply2", "+24VErrors"]	{tot: 24910, count: 24953, avg: 0.9982767603093816}
+["SBCInfo", "amountInBuffer"]	{tot: 0, count: 764, avg: 0}
+["SBCInfo", "byteRateReceived"]	{tot: 605639021.265625, count: 764, avg: 792721.2320230694}
+
+=============================================================
+8. history_mjddaq2
+
+NOTE: It is difficult to return ONLY one variable from this database. The example view 
+returns many things not asked for.
+
+Example view:
+http://feresa.physics.unc.edu:5984/history_mjddaq/_design/history/_view/values?startkey=%22byteRateSent,SBCInfo,2015/09/23%2021:31:39%22
+
+Variable list:
+["PreAmpSupply5", "-12VErrors"]		{tot: 3250603, count: 273611, avg: 11.880381271220822}
+["PreAmpSupply5", "-24VErrors"]		{tot: 3329947, count: 273611, avg: 12.170369612332838}
+["PreAmpSupply5", "+12VErrors"]		{tot: 1468229, count: 273611, avg: 5.366118321266323}
+["PreAmpSupply5", "+24VErrors"]		{tot: 1299178, count: 273611, avg: 4.748266699803736}
+["PreAmpSupply6", "-12VErrors"]		{tot: 4370873, count: 192268, avg: 22.733231739030938}
+["PreAmpSupply6", "-24VErrors"]		{tot: 4166728, count: 192268, avg: 21.67145858905278}
+["PreAmpSupply6", "+12VErrors"]		{tot: 2583273, count: 192268, avg: 13.43579274762311}
+["PreAmpSupply6", "+24VErrors"]		{tot: 2422910, count: 192268, avg: 12.601732997690723}
+["PreAmpSupply7", "-12VErrors"]		{tot: 3759520, count: 246397, avg: 15.257977978627986}
+["PreAmpSupply7", "-24VErrors"]		{tot: 3685364, count: 246397, avg: 14.957016522116746}
+["PreAmpSupply7", "+12VErrors"]		{tot: 1894868, count: 246397, avg: 7.69030467091726}
+["PreAmpSupply7", "+24VErrors"]		{tot: 1735572, count: 246397, avg: 7.043803293059574}
+["PreAmpSupply8", "-12VErrors"]		{tot: 3207435, count: 229625, avg: 13.96814371257485}
+["PreAmpSupply8", "-24VErrors"]		{tot: 3317917, count: 229625, avg: 14.44928470332063}
+["PreAmpSupply8", "+12VErrors"]		{tot: 1447516, count: 229625, avg: 6.303825802939575}
+["PreAmpSupply8", "+24VErrors"]		{tot: 1445542, count: 229625, avg: 6.295229178007621}
+["SBCInfo", "amountInBuffer"]		{tot: 69067694, count: 172676, avg: 399.9843290324075}
+["SBCInfo", "busErrorCount"]		{tot: 20271866295, count: 1107, avg: 18312435.677506775}
+["SBCInfo", "byteRateReceived"]		{tot: 265336241900.1875, count: 172676, avg: 1536613.321481778}
+["SBCInfo", "byteRateSent"]			{tot: 42723291967.78174, count: 172676, avg: 247418.81887339143}
+["SBCInfo", "err_count"]			{tot: 349104557935, count: 172676, avg: 2021731.7863223609}
+["SBCInfo", "lostByteCount"]		{tot: 897340800, count: 172676, avg: 5196.673538882068}
+["SBCInfo", "pollingRate"]			{tot: 140000, count: 172676, avg: 0.8107669855683477}
+["SBCInfo", "recordsTransfered"]	{tot: 470991219791, count: 172676, avg: 2727600.939279344}
+["SBCInfo", "statusBits"]			{tot: 499290, count: 172676, avg: 2.8914846301744306}
+["SBCInfo", "wrapArounds"]			{tot: 111953395, count: 172676, avg: 648.3436899163752}
+
+=============================================================
+9. history_mjddetaccdaq
+No "ave" view option, skip it.
+
+=============================================================
+10. history_mjdscm
+
+Example view:
+http://feresa.physics.unc.edu:5984/history_mjdscm/_design/history/_view/values?startkey="Log%20Purge%20Press,Davis%20LN2"
+
+Variable list:
+["Davis LN2", ""]					{count: 3, avg: 0}
+["Davis LN2", "Cryo1"]				{count: 529846}
+["Davis LN2", "GB flow meter"]		{count: 1326993}
+["Davis LN2", "Glove Box Purge"]	{count: 1519090}
+["Davis LN2", "Log Purge Press"]	{count: 447088}
+["Davis LN2", "Shield flow meter"]	{count: 609510}
+["Davis LN2", "Shield Purge"]		{count: 684941}
+["Davis LN2", "Thermosyphon"]		{count: 715266}
+["Davis SCM Environmental Monitoring Processes", ""]					{count: 891408}
+["Davis SCM Environmental Monitoring Processes", "DR 0.3 um count"]		{count: 1604981}
+["Davis SCM Environmental Monitoring Processes", "DR 0.5 um count"]		{count: 1616446}
+["Davis SCM Environmental Monitoring Processes", "DR 0.7 um count"]		{count: 1616446}
+["Davis SCM Environmental Monitoring Processes", "DR 1.0 um count"]		{count: 1616446}
+["Davis SCM Environmental Monitoring Processes", "DR 2.0 um count"]		{count: 1616446}
+["Davis SCM Environmental Monitoring Processes", "DR 5.0 um count"]		{count: 1616446}
+["Davis SCM Environmental Monitoring Processes", "DR Diff Press"]		{count: 1625357}
+["Davis SCM Environmental Monitoring Processes", "DR Radon"]			{count: 1601182}
+["Davis SCM Environmental Monitoring Processes", "DR Rel. Humidity"]	{count: 1617494}
+["Davis SCM Environmental Monitoring Processes", "DR RH Rad7"]			{count: 1601180}
+["Davis SCM Environmental Monitoring Processes", "DR Temperature"]		{count: 1617494}
+["Davis SCM Environmental Monitoring Processes", "GB 0.3um"]			{count: 583041}
+["Davis SCM Environmental Monitoring Processes", "GB 0.5um"]			{count: 583041}
+["Davis SCM Environmental Monitoring Processes", "GB humidity"]			{count: 583041}
+["Davis SCM Environmental Monitoring Processes", "GB temperature"]		{count: 583041}
+["Davis SCM Environmental Monitoring Processes", "GT521_1_1"]			{count: 2}
+["Davis SCM Environmental Monitoring Processes", "MS 0.3 um count"]		{count: 1659476}
+["Davis SCM Environmental Monitoring Processes", "MS 0.5 um count"]		{count: 1659476}
+["Davis SCM Environmental Monitoring Processes", "MS 0.7 um count"]		{count: 1659476}
+["Davis SCM Environmental Monitoring Processes", "MS 1.0 um count"]		{count: 1659476}
+["Davis SCM Environmental Monitoring Processes", "MS 2.0 um count"]		{count: 1659476}
+["Davis SCM Environmental Monitoring Processes", "MS 5.0 um count"]		{count: 1659476}
+["Davis SCM Environmental Monitoring Processes", "MS Rel. Humidity"]	{count: 1658428}
+["Davis SCM Environmental Monitoring Processes", "MS Temperature"]		{count: 1658428}
+["Davis SCM Environmental Monitoring Processes", "SGB 0.3um"]			{count: 457116}
+["Davis SCM Environmental Monitoring Processes", "SGB 0.5um"]			{count: 457116}
+["Davis SCM Environmental Monitoring Processes", "Sheild RH Rad7"]		{count: 444343}
+["Davis SCM Environmental Monitoring Processes", "Shield Radon"]		{count: 444343}
+
+=============================================================
+11. history_mjdstringtestdaq
+
+No example view, database is unresponsive.
+
+Variable list:
+["PreAmpSupply1", "-12VErrors"]		{tot: 943099, count: 473557, avg: 1.9915216119706816}
+["PreAmpSupply1", "-24VErrors"]		{tot: 1000172, count: 473557, avg: 2.1120414226798463}
+["PreAmpSupply1", "+12VErrors"]		{tot: 943099, count: 473557, avg: 1.9915216119706816}
+["PreAmpSupply1", "+24VErrors"]		{tot: 943099, count: 473557, avg: 1.9915216119706816}
+["SBCInfo", "amountInBuffer"]		{tot: 57568, count: 306, avg: 188.13071895424838}
+["SBCInfo", "byteRateReceived"]		{tot: 344316992.71875, count: 306, avg: 1125218.9304534313}
+["SBCInfo", "byteRateSent"]			{tot: 41321303.921875, count: 306, avg: 135036.94092116013}
+["SBCInfo", "err_count"]			{tot: 276, count: 306, avg: 0.9019607843137255}
+["SBCInfo", "lostByteCount"]		{tot: 0, count: 306, avg: 0}
+["SBCInfo", "pollingRate"]			{tot: 0, count: 306, avg: 0}
+["SBCInfo", "recordsTransfered"]	{tot: 55370820, count: 306, avg: 180950.39215686274}
+["SBCInfo", "statusBits"]			{tot: 696, count: 306, avg: 2.2745098039215685}
+["SBCInfo", "wrapArounds"]			{tot: 2258, count: 306, avg: 7.379084967320262}
+
+=============================================================
+12 history_onsite_analysis_mac_pro
+skip it.
+
+=============================================================
+13. history_stcpumpcart
+skip it.
+
+=============================================================
+14. history_tcrdaq
+
+Example view:
+http://feresa.physics.unc.edu:5984/history_tcrdaq/_design/history/_view/values?startkey=%22O2%20Level%20NW,Critical%20%20Processes,2015/07/01%22
+
+Variable list:
+["Critical  Processes", "O2 Level NW"]					{count: 2126849, avg: 20.902939551578}
+["Critical  Processes", "O2 Level South"]				{count: 2126849, avg: 20.889464765173702}
+["Operational Processes", ""]							{count: 21140, avg: 0}
+["Operational Processes", "Ante Room Particle Count"]	{count: 28091, avg: 22.057990103591898}
+["Operational Processes", "Cleanroom RH"]				{count: 2127923, avg: 50.24951997658881}
+["Operational Processes", "Cleanroom Temp."]			{count: 2127923, avg: 24.25620547510796}
+["Operational Processes", "Diff. Pressure"]				{count: 2127923, avg: 0.08092204509378753}
+["Operational Processes", "N2 Flow Rate"]				{count: 2127923, avg: 0.8525436871840308}
+["Operational Processes", "Particle Count"]				{count: 297270, avg: 48.26326235408887}
+["Operational Processes", "Particle Count (0.3 um)"]	{count: 1562115, avg: 1047.9674025279828}
+["Operational Processes", "Particle Count (0.5 um)"]	{count: 1568716, avg: 312.8623453831031}
+["Operational Processes", "Particle Count (0.7um)"]		{count: 1562115, avg: 150.0757076143562}
+["Operational Processes", "Particle Count (1.0 um)"]	{count: 1562115, avg: 99.33864984332139}
+["Operational Processes", "Particle Count (2.0 um)"]	{count: 1562115, avg: 50.4677395710303}
+["Operational Processes", "Particle Count (5.0 um)"]	{count: 1568715, avg: 8.726537962599963}
+["Operational Processes", "RAD7 Internal Humidity"]		{count: 1536340, avg: 9.77759480323366}
+["Operational Processes", "Radon Level"]				{count: 1719222, avg: 10.85141644463785}
+["Operational Processes", "RH Bath 1"]		{count: 2127923, avg: 41.188618668968175}
+["Operational Processes", "RH Bath 10"]		{count: 2127923, avg: 48.83351246619753}
+["Operational Processes", "RH Bath 2"]		{count: 2127923, avg: 45.6174460270301}
+["Operational Processes", "RH Bath 3"]		{count: 2127923, avg: 46.392371244364675}
+["Operational Processes", "RH Bath 4"]		{count: 2127923, avg: 48.68288484017771}
+["Operational Processes", "RH Bath 5"]		{count: 2127923, avg: 36.19903037650726}
+["Operational Processes", "RH Bath 6"]		{count: 2127923, avg: 48.3917799703135}
+["Operational Processes", "RH Bath 7"]		{count: 2127923, avg: 45.60712550438203}
+["Operational Processes", "RH Bath 8"]		{count: 2127923, avg: 49.536556591529305}
+["Operational Processes", "RH Bath 9"]		{count: 2127923, avg: 42.7760468259666}
+
+=============================================================
+15. history_tcrdaq_(2)
+
+Example view:
+http://feresa.physics.unc.edu:5984/history_tcrdaq_(2)/_design/history/_view/values?startkey=%22Cleanroom%20RH,Operational%20Processes%22
+
+Variable list:
+["Critical Processes", "O2 Level NW"]			{count: 2857, avg: 20.908058223423993}
+["Critical Processes", "O2 Level South"]		{count: 2857, avg: 20.892581912338933}
+["Operational Processes", "Cleanroom RH"]		{count: 2857, avg: 56.441333569135125}
+["Operational Processes", "Cleanroom Temp."]	{count: 2857, avg: 25.66549523727102}
+["Operational Processes", "Diff. Pressure"]		{count: 2857, avg: 0.10355683014889559}
+["Operational Processes", "N2 Flow Rate"]		{count: 2857, avg: 0.8442174245464413}
+["Operational Processes", "Particle Count (0.3 um)"]	{count: 2857, avg: 793.9250962548127}
+["Operational Processes", "Particle Count (0.5 um)"]	{count: 2857, avg: 200.9229961498075}
+["Operational Processes", "Particle Count (0.7um)"]		{count: 2857, avg: 101.35736786839342}
+["Operational Processes", "Particle Count (1.0 um)"]	{count: 2857, avg: 60.66678333916696}
+["Operational Processes", "Particle Count (2.0 um)"]	{count: 2857, avg: 19.138606930346516}
+["Operational Processes", "Particle Count (5.0 um)"]	{count: 2857, avg: 0.6993349667483374}
+["Operational Processes", "RAD7 Internal Humidity"]		{count: 2857, avg: 4.04165208260413}
+["Operational Processes", "Radon Level"]				{count: 2857, avg: 14.085404262202246}
+["Operational Processes", "RH Bath 1"]		{count: 2857, avg: 40.738218817978485}
+["Operational Processes", "RH Bath 10"]		{count: 2857, avg: 50.942678672941}
+["Operational Processes", "RH Bath 2"]		{count: 2857, avg: 45.073579856824615}
+["Operational Processes", "RH Bath 3"]		{count: 2857, avg: 39.02873508391974}
+["Operational Processes", "RH Bath 4"]		{count: 2857, avg: 54.07494917546585}
+["Operational Processes", "RH Bath 5"]		{count: 2857, avg: 44.7653764829648}
+["Operational Processes", "RH Bath 6"]		{count: 2857, avg: 50.45067822535156}
+["Operational Processes", "RH Bath 7"]		{count: 2857, avg: 46.5533861795171}
+["Operational Processes", "RH Bath 8"]		{count: 2857, avg: 52.44211648625686}
+["Operational Processes", "RH Bath 9"]		{count: 2857, avg: 47.1671459846808}
