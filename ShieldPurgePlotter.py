@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 ######################################
 
 
-if(len(sys.argv)<3):
-    print('usage: python3 ShieldPurgePlotter.py YYY/mm/dd-HH:MM  YYYY/mm/dd-HH:MM')
+if(len(sys.argv)<4):
+    print('usage: python3 ShieldPurgePlotter.py YYY/mm/dd-HH:MM  YYYY/mm/dd-HH:MM name')
     print('where the two timestamps give the range for the analysis')
     sys.exit()
 
@@ -20,6 +20,8 @@ time.tzset()
 
 start = time.strptime(sys.argv[1], "%Y/%m/%d-%H:%M")
 stop = time.strptime(sys.argv[2], "%Y/%m/%d-%H:%M")
+
+dataname = sys.argv[3] 
 
 starttime_str = time.strftime("%b %d %Y %H:%M",start) #human readable
 stoptime_str = time.strftime("%b %d %Y %H:%M",stop) #human readable
@@ -49,7 +51,7 @@ os.system(flowcom)
 FlowFile = open('ShieldFlow.csv','r')
 FlowLines = FlowFile.readlines()
 FlowFile.close()
-# os.system("rm ShieldFlow.csv")
+os.system("rm ShieldFlow.csv")
 
 
 #flow data
@@ -68,7 +70,8 @@ for l in range(1,len(bfParse0)):
 t0time = time.strftime("%b %d %Y %H:%M",time.localtime(t0)) #human readbale time
 
 #save output
-FlowFileOut = open('ShieldFlow.txt','w')
+FlowFileOutName = '{}_ShieldFlow.txt'.format{dataname}
+FlowFileOut = open(FlowFileOutName,'w')
 FlowFileOut.write("#time flow[lpm]\n")
 for i in range(len(Flows)):
     FlowFileOut.write("{}\t{}\n".format(Times_sec[i],Flows[i]))
@@ -76,7 +79,7 @@ FlowFile.close()
 
 
 # #plot
-pltName = "ShieldPurge.pdf"
+pltName = '{}_ShieldPurge.pdf'.format{dataname}
 pltTitle = "Shield Purge"
 pltxlabel = "Days Since {} MT".format(t0time)
 plt.plot(Times_hr,Flows)
@@ -87,4 +90,4 @@ plt.title(pltTitle)
 plt.grid(True)
 plt.savefig(pltName)
 
-print("\n Date in ShieldFlow.txt\n Plot in ShieldPurge.pdf")
+print("\n Date in {}}\n Plot in {}}".format(FlowFileOutName,pltName))
