@@ -90,4 +90,4 @@ plt.title(pltTitle)
 plt.grid(True)
 plt.savefig(pltName)
 
-print("\n Date in {}}\n Plot in {}}".format(FlowFileOutName,pltName))
+print("\n Date in {}\n Plot in {}".format(FlowFileOutName,pltName))
