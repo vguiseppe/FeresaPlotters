@@ -80,7 +80,7 @@ FlowFile.close()
 
 # #plot
 pltName = '{}_ShieldPurge.pdf'.format(dataname)
-pltTitle = "Shield Purge"
+pltTitle = dataname
 pltxlabel = "Days Since {} MT".format(t0time)
 plt.plot(Times_hr,Flows)
 plt.xlabel(pltxlabel)
@@ -90,4 +90,4 @@ plt.title(pltTitle)
 plt.grid(True)
 plt.savefig(pltName)
 
-print("\n Date in {}\n Plot in {}".format(FlowFileOutName,pltName))
+print("\n Data in {}\n Plot in {}".format(FlowFileOutName,pltName))

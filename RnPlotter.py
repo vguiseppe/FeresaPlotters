@@ -72,7 +72,7 @@ for l in range(1,len(bfParse0)):
 t0time = time.strftime("%b %d %Y %H:%M",time.localtime(t0)) #human readbale time
 
 #save output
-FileOutName = '{}_Radon.txt'.format(dataname)
+FileOutName = '{}_RoomRadon.txt'.format(dataname)
 FileOut = open(FileOutName,'w')
 FileOut.write("#time Rn[pCi/L]\n")
 for i in range(len(Data)):
@@ -81,8 +81,8 @@ FileOut.close()
 
 
 # #plot
-pltName = '{}_Radon.pdf'.format(dataname)
-pltTitle = "Davis Radon"
+pltName = '{}_RoomRadon.pdf'.format(dataname)
+pltTitle = dataname
 pltxlabel = "Hours Since {} MT".format(t0time)
 plt.plot(Times_hr,Data)
 plt.xlabel(pltxlabel)
@@ -92,4 +92,4 @@ plt.title(pltTitle)
 plt.grid(True)
 plt.savefig(pltName)
 
-print("\n Date in {}\n Plot in {}".format(FileOutName,pltName))
+print("\n Data in {}\n Plot in {}".format(FileOutName,pltName))
