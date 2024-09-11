@@ -70,7 +70,7 @@ for l in range(1,len(bfParse0)):
 t0time = time.strftime("%b %d %Y %H:%M",time.localtime(t0)) #human readbale time
 
 #save output
-FlowFileOutName = '{}_ShieldFlow.txt'.format{dataname}
+FlowFileOutName = '{}_ShieldFlow.txt'.format(dataname)
 FlowFileOut = open(FlowFileOutName,'w')
 FlowFileOut.write("#time flow[lpm]\n")
 for i in range(len(Flows)):
@@ -79,7 +79,7 @@ FlowFile.close()
 
 
 # #plot
-pltName = '{}_ShieldPurge.pdf'.format{dataname}
+pltName = '{}_ShieldPurge.pdf'.format(dataname)
 pltTitle = "Shield Purge"
 pltxlabel = "Days Since {} MT".format(t0time)
 plt.plot(Times_hr,Flows)
