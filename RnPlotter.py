@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 ######################################
 
 
-if(len(sys.argv)<3):
-    print('usage: python3 RnPlotter.py YYY/mm/dd-HH:MM  YYYY/mm/dd-HH:MM')
+if(len(sys.argv)<4):
+    print('usage: python3 RnPlotter.py YYY/mm/dd-HH:MM  YYYY/mm/dd-HH:MM name')
     print('where the two timestamps give the range for the analysis')
     sys.exit()
 
@@ -23,6 +23,8 @@ time.tzset()
 
 start = time.strptime(sys.argv[1], "%Y/%m/%d-%H:%M")
 stop = time.strptime(sys.argv[2], "%Y/%m/%d-%H:%M")
+
+dataname = sys.argv[3]
 
 starttime_str = time.strftime("%b %d %Y %H:%M",start) #human readable
 stoptime_str = time.strftime("%b %d %Y %H:%M",stop) #human readable
@@ -70,7 +72,8 @@ for l in range(1,len(bfParse0)):
 t0time = time.strftime("%b %d %Y %H:%M",time.localtime(t0)) #human readbale time
 
 #save output
-FileOut = open('Radon.txt','w')
+FileOutName = '{}_Radon.txt'.format(dataname)
+FileOut = open(FileOutName,'w')
 FileOut.write("#time Rn[pCi/L]\n")
 for i in range(len(Data)):
     FileOut.write("{}\t{}\n".format(Times_sec[i],Data[i]))
@@ -78,7 +81,7 @@ FileOut.close()
 
 
 # #plot
-pltName = "Radon.pdf"
+pltName = '{}_Radon.pdf'.format(dataname)
 pltTitle = "Davis Radon"
 pltxlabel = "Hours Since {} MT".format(t0time)
 plt.plot(Times_hr,Data)
@@ -89,4 +92,4 @@ plt.title(pltTitle)
 plt.grid(True)
 plt.savefig(pltName)
 
-print("\n Date in Radon.txt\n Plot in Radon.pdf")
+print("\n Date in {}\n Plot in {}".format(FileOutName,pltName))
