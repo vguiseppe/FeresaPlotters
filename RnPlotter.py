@@ -74,7 +74,7 @@ t0time = time.strftime("%b %d %Y %H:%M",time.localtime(t0)) #human readbale time
 #save output
 FileOutName = '{}_RoomRadon.txt'.format(dataname)
 FileOut = open(FileOutName,'w')
-FileOut.write("#time Rn[pCi/L]\n")
+FileOut.write("#time Rn[pCi/L]\tFrom {} to {}\n".format(starttime_str,stoptime_str))
 for i in range(len(Data)):
     FileOut.write("{}\t{}\n".format(Times_sec[i],Data[i]))
 FileOut.close()

@@ -72,7 +72,7 @@ t0time = time.strftime("%b %d %Y %H:%M",time.localtime(t0)) #human readbale time
 #save output
 FlowFileOutName = '{}_ShieldFlow.txt'.format(dataname)
 FlowFileOut = open(FlowFileOutName,'w')
-FlowFileOut.write("#time flow[lpm]\n")
+FlowFileOut.write("#time flow[lpm]\tFrom {} to {}\n".format(starttime_str,stoptime_str))
 for i in range(len(Flows)):
     FlowFileOut.write("{}\t{}\n".format(Times_sec[i],Flows[i]))
 FlowFile.close()
